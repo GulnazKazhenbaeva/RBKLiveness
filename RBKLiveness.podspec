@@ -8,7 +8,7 @@ s.description  = "The RBKLiveness is a completely customizable widget that can b
 s.homepage     = "https://www.bankrbk.kz/"
 s.license      = "MIT"
 s.platform     = :ios, "12.0"
-s.source       = { :git => 'https://gulnazKazhenbaeva@bitbucket.org/rbk_dev_team/rbkliveness.git', , :tag => "#{s.version}"}
+s.source       = { :git => 'https://gulnazKazhenbaeva@bitbucket.org/rbk_dev_team/rbkliveness.git', :tag => "#{s.version}"}
 s.source_files = 'RBKLiveness/**/*.{swift}'
 s.resources = "RBKLiveness/**/*.{png,jpeg,jpg,xcassets}"
 s.static_framework = true
