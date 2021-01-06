@@ -1,0 +1,11 @@
+framework module RBKLiveness {
+  umbrella header "RBKLiveness.h"
+
+  export *
+  module * { export * }
+}
+
+module RBKLiveness.Swift {
+    header "RBKLiveness-Swift.h"
+    requires objc
+}
