@@ -2,8 +2,6 @@ RBKLiveness
 =======
 > Swift library 
 
-<span id = "English">
-
 
 ## Requirements
 
