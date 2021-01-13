@@ -1,13 +1,13 @@
 //
 //  CameraController.swift
-//  AV Foundation
+//  AVFoundation
 
 import AVFoundation
 import UIKit
 import CoreVideo
 
 public protocol CameraControllerDelegate: class {
-    func closeCamera()
+    /// called on error
     func handleError(_ error: String)
 }
 
@@ -18,18 +18,16 @@ public class CameraController: UIViewController {
     lazy var captureSession = AVCaptureSession()
     lazy var sessionQueue = DispatchQueue(label: "com.google.firebaseml.visiondetector.SessionQueue")
     
-    open var cameraPosition: CameraPosition {
-        return type.position
-    }
-    open var type: CameraMask = .selfie
+    open var cameraPosition: CameraPosition = .rear
+    internal var hasCaptureButton = false
     
-    var camera: AVCaptureDevice?
-    var cameraInput: AVCaptureDeviceInput?
-    var photoOutput: AVCapturePhotoOutput?
+    internal var camera: AVCaptureDevice?
+    internal var cameraInput: AVCaptureDeviceInput?
+    internal var photoOutput: AVCapturePhotoOutput?
     
-    var previewLayer: AVCaptureVideoPreviewLayer?
+    internal var previewLayer: AVCaptureVideoPreviewLayer?
     
-    var flashMode = AVCaptureDevice.FlashMode.off
+    internal var flashMode = AVCaptureDevice.FlashMode.off
     
     var maskFrame: CGRect?
     
@@ -70,7 +68,7 @@ extension CameraController {
         let session = AVCaptureDevice.DiscoverySession(
             deviceTypes: [.builtInWideAngleCamera],
             mediaType: AVMediaType.video,
-            position: type.position == .front ? .front : .back
+            position: cameraPosition == .front ? .front : .back
         )
         let cameras = session.devices.compactMap { $0 }
         guard !cameras.isEmpty else { throw CameraControllerError.noCamerasAvailable }
@@ -137,9 +135,8 @@ extension CameraController {
         self.previewLayer?.connection?.videoOrientation = .portrait
         
         addInfoLabel(on: view)
-        switch type {
-        case .selfie: break
-        default: addCaptureButton(on: view)
+        if hasCaptureButton {
+            addCaptureButton(on: view)
         }
         
         setMask(on: view)
@@ -226,19 +223,6 @@ extension CameraController {
     public enum CameraPosition {
         case front
         case rear
-    }
-    
-    public enum CameraMask {
-        case selfie
-        case documentFront
-        case documentBack
-        
-        var position: CameraPosition {
-            switch self {
-            case .selfie: return .front
-            case .documentFront, .documentBack: return .rear
-            }
-        }
     }
 }
 

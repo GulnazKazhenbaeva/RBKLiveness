@@ -13,7 +13,9 @@ import MLKitVision
 import MLKitFaceDetection
 
 public protocol LivenessCameraDelegate: CameraControllerDelegate {
-    func handleRecognizedFace(_ image: UIImage, face: UIImage)
+    /// called after all tests have been passed
+    func handleRecognizedFace(_ face: UIImage)
+    /// called after every test step
     func sendFacePhoto(_ face: UIImage)
 }
 
@@ -413,7 +415,7 @@ extension LivenessCameraController: AVCaptureVideoDataOutputSampleBufferDelegate
             if self.index == self.actions.count {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     if let img = self.getImageFromSampleBuffer(sampleBuffer: sampleBuffer) {
-                        self.delegate?.handleRecognizedFace(img, face: img)
+                        self.delegate?.handleRecognizedFace(img)
                     } else {
                         self.delegate?.handleError("Something wrong in liveness process")
                     }
