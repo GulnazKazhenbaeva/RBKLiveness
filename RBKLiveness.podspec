@@ -8,9 +8,13 @@ s.description  = "The RBKLiveness is a completely customizable widget that can b
 s.homepage     = "https://www.bankrbk.kz/"
 s.license      = "MIT"
 s.platform     = :ios, "10.0"
+s.resource_bundles  = {
+	'RBKLiveness' => ['Resources/*.png']
+}
+# s.source       = { :path => '{.}' }
 s.source       = { :git => 'https://gulnazKazhenbaeva@bitbucket.org/rbk_dev_team/rbkliveness.git', :tag => "#{s.version}"}
 s.source_files = 'RBKLiveness/**/*.{swift}'
-s.resources = "RBKLiveness/**/*.{png,jpeg,jpg,xcassets}"
+s.resources = "RBKLiveness/**/*.{png,jpeg,jpg}"
 s.static_framework = true
 s.dependency 'GoogleMLKit/FaceDetection'
 

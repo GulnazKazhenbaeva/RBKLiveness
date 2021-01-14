@@ -95,7 +95,7 @@ public class LivenessCameraController: CameraController {
     
     override func addSubviews() {
         let imgView = UIImageView(image:
-            #imageLiteral(resourceName: "success").withRenderingMode(.alwaysTemplate)
+            UIImage(named: "checked.png")?.withRenderingMode(.alwaysTemplate)
         )
         successView.addSubview(imgView)
         imgView.translatesAutoresizingMaskIntoConstraints = false
