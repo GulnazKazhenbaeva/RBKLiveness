@@ -2,8 +2,6 @@ RBKLiveness
 =======
 > Swift library 
 
-<span id = "English">
-
 
 ## Requirements
 
@@ -20,7 +18,7 @@ You can use [CocoaPods](http://cocoapods.org/) to install `RBKLiveness` by addin
 ```ruby
 platform :ios, '10.0'
 use_frameworks!
-pod 'RBKLiveness', :git => "https://gulnazKazhenbaeva@bitbucket.org/rbk_dev_team/rbkliveness.git"
+pod 'RBKLiveness', :git => 'PROJECT_SOURCE'
 ```
 
 Then, run the following command:
@@ -86,15 +84,17 @@ cameraController.closeCamera()
 ### Delegate Imp
 
 ```swift
-/// called after all tests have been passed
-func handleRecognizedFace(_ face: UIImage)
-/// called after every test step
-func sendFacePhoto(_ face: UIImage)
-/// called on error
-func handleError(_ error: String)
+extension ViewController: LivenessCameraDelegate {
+   /// called after all tests have been passed
+   func handleRecognizedFace(_ face: UIImage) {}
+   
+   /// called after every test step
+   func sendFacePhoto(_ face: UIImage) {}
+   
+   /// called on error
+   func handleError(_ error: String) {}
+}
 ```
-
-</span>
 
 [swift-image]:https://img.shields.io/badge/swift-4.0-orange.svg
 [swift-url]: https://swift.org/
