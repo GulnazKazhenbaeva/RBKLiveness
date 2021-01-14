@@ -244,7 +244,12 @@ extension CameraController {
         let height = NSLayoutConstraint(item: captureButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: RBKLivenessConfig.buttonSize.height)
         let width = NSLayoutConstraint(item: captureButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: RBKLivenessConfig.buttonSize.width)
         let centerX = NSLayoutConstraint(item: captureButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
-        let bottom = NSLayoutConstraint(item: captureButton, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide.bottomAnchor, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+        let bottom: NSLayoutConstraint
+        if #available(iOS 11.0, *) {
+            bottom = NSLayoutConstraint(item: captureButton, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide.bottomAnchor, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+        } else {
+            bottom = NSLayoutConstraint(item: captureButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+        }
         view.addConstraints([height, width, centerX, bottom])
         
         captureButton.cornered(radius: RBKLivenessConfig.buttonSize.height / 2)
@@ -262,7 +267,12 @@ extension CameraController {
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         let right = NSLayoutConstraint(item: infoLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 20)
         let left = NSLayoutConstraint(item: infoLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 20)
-        let top = NSLayoutConstraint(item: infoLabel, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 20)
+        let top: NSLayoutConstraint
+        if #available(iOS 11.0, *) {
+            top = NSLayoutConstraint(item: infoLabel, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 20)
+        } else {
+            top = NSLayoutConstraint(item: infoLabel, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 20)
+        }
         view.addConstraints([top, left, right])
     
         view.setNeedsLayout()

@@ -7,7 +7,7 @@ RBKLiveness
 
 ## Requirements
 
-- iOS 12.0+
+- iOS 10.0+
 - Xcode 11.7+
 - Swift4
 
@@ -18,7 +18,7 @@ RBKLiveness
 You can use [CocoaPods](http://cocoapods.org/) to install `RBKLiveness` by adding it to your `Podfile`:
 
 ```ruby
-platform :ios, '12.0'
+platform :ios, '10.0'
 use_frameworks!
 pod 'RBKLiveness', :git => "https://gulnazKazhenbaeva@bitbucket.org/rbk_dev_team/rbkliveness.git"
 ```
