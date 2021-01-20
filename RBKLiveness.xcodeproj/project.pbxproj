@@ -7,41 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0C1A0B25B1758E00748EFC /* CameraControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0C1A0A25B1758E00748EFC /* CameraControllerDelegate.swift */; };
+		1C0C1A0D25B17BE100748EFC /* LivenessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0C1A0C25B17BE100748EFC /* LivenessController.swift */; };
 		1C5C308C25B04DEC005815FE /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C5C308A25B04DEC005815FE /* checked.png */; };
 		1C5C308D25B04DEC005815FE /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C5C308B25B04DEC005815FE /* camera.png */; };
+		1C90A6E625B6E28A0007475B /* LivenessValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90A6E525B6E28A0007475B /* LivenessValidationType.swift */; };
+		1C90A6E825B6F9C60007475B /* LivenessController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90A6E725B6F9C60007475B /* LivenessController+Extension.swift */; };
 		1CA3620B259AE38D000B039C /* RBKLiveness.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CA36209259AE38D000B039C /* RBKLiveness.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CA36220259AE612000B039C /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA36212259AE612000B039C /* CameraController.swift */; };
 		1CA36221259AE612000B039C /* RBKLivenessConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA36213259AE612000B039C /* RBKLivenessConfig.swift */; };
 		1CA36222259AE612000B039C /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA36214259AE612000B039C /* UIUtilities.swift */; };
-		1CA36223259AE612000B039C /* LivenessCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA36215259AE612000B039C /* LivenessCameraController.swift */; };
-		1CA36224259AE612000B039C /* ConfirmFaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA36217259AE612000B039C /* ConfirmFaceCell.swift */; };
-		1CA36225259AE612000B039C /* ConfirmDefaultValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA36218259AE612000B039C /* ConfirmDefaultValueCell.swift */; };
-		1CA36226259AE612000B039C /* RegistrationFaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA36219259AE612000B039C /* RegistrationFaceCell.swift */; };
-		1CA36227259AE612000B039C /* CameraBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3621A259AE612000B039C /* CameraBottomView.swift */; };
 		1CA36228259AE612000B039C /* LivenessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3621B259AE612000B039C /* LivenessManager.swift */; };
 		1CA36229259AE612000B039C /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3621D259AE612000B039C /* Array+Extensions.swift */; };
-		1CA3622A259AE612000B039C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3621E259AE612000B039C /* UIView+Extensions.swift */; };
 		1CA3622B259AE612000B039C /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA3621F259AE612000B039C /* UIImage+Extensions.swift */; };
 		1FE1800FF41EFC0859818E73 /* Pods_RBKLiveness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1645A56B8F5C6DF1EAE234B /* Pods_RBKLiveness.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C0C1A0A25B1758E00748EFC /* CameraControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControllerDelegate.swift; sourceTree = "<group>"; };
+		1C0C1A0C25B17BE100748EFC /* LivenessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessController.swift; sourceTree = "<group>"; };
 		1C5C308A25B04DEC005815FE /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		1C5C308B25B04DEC005815FE /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		1C90A6E525B6E28A0007475B /* LivenessValidationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessValidationType.swift; sourceTree = "<group>"; };
+		1C90A6E725B6F9C60007475B /* LivenessController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LivenessController+Extension.swift"; sourceTree = "<group>"; };
 		1CA36206259AE38C000B039C /* RBKLiveness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RBKLiveness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CA36209259AE38D000B039C /* RBKLiveness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBKLiveness.h; sourceTree = "<group>"; };
 		1CA3620A259AE38D000B039C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CA36212259AE612000B039C /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		1CA36213259AE612000B039C /* RBKLivenessConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RBKLivenessConfig.swift; sourceTree = "<group>"; };
 		1CA36214259AE612000B039C /* UIUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
-		1CA36215259AE612000B039C /* LivenessCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivenessCameraController.swift; sourceTree = "<group>"; };
-		1CA36217259AE612000B039C /* ConfirmFaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFaceCell.swift; sourceTree = "<group>"; };
-		1CA36218259AE612000B039C /* ConfirmDefaultValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDefaultValueCell.swift; sourceTree = "<group>"; };
-		1CA36219259AE612000B039C /* RegistrationFaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFaceCell.swift; sourceTree = "<group>"; };
-		1CA3621A259AE612000B039C /* CameraBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraBottomView.swift; sourceTree = "<group>"; };
 		1CA3621B259AE612000B039C /* LivenessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivenessManager.swift; sourceTree = "<group>"; };
 		1CA3621D259AE612000B039C /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		1CA3621E259AE612000B039C /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1CA3621F259AE612000B039C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		A1645A56B8F5C6DF1EAE234B /* Pods_RBKLiveness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RBKLiveness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66909E7FCCEF5A9E5E8B7FF /* Pods-RBKLiveness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBKLiveness.release.xcconfig"; path = "Target Support Files/Pods-RBKLiveness/Pods-RBKLiveness.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +65,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1C0C1A0925B1731300748EFC /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				1CA3621F259AE612000B039C /* UIImage+Extensions.swift */,
+				1CA36212259AE612000B039C /* CameraController.swift */,
+				1C0C1A0A25B1758E00748EFC /* CameraControllerDelegate.swift */,
+				1CA36213259AE612000B039C /* RBKLivenessConfig.swift */,
+				1C0C1A0C25B17BE100748EFC /* LivenessController.swift */,
+				1C90A6E525B6E28A0007475B /* LivenessValidationType.swift */,
+				1CA3621D259AE612000B039C /* Array+Extensions.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		1CA361FC259AE38C000B039C = {
 			isa = PBXGroup;
 			children = (
@@ -90,10 +100,10 @@
 		1CA36208259AE38C000B039C /* RBKLiveness */ = {
 			isa = PBXGroup;
 			children = (
+				1C0C1A0925B1731300748EFC /* Camera */,
 				1CA3622C259AE62F000B039C /* Resources */,
 				1CA36211259AE612000B039C /* Sources */,
 				1CA36209259AE38D000B039C /* RBKLiveness.h */,
-				1CA3620A259AE38D000B039C /* Info.plist */,
 			);
 			path = RBKLiveness;
 			sourceTree = "<group>";
@@ -101,41 +111,17 @@
 		1CA36211259AE612000B039C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1CA36212259AE612000B039C /* CameraController.swift */,
-				1CA36213259AE612000B039C /* RBKLivenessConfig.swift */,
 				1CA36214259AE612000B039C /* UIUtilities.swift */,
-				1CA36215259AE612000B039C /* LivenessCameraController.swift */,
-				1CA36216259AE612000B039C /* View */,
-				1CA3621A259AE612000B039C /* CameraBottomView.swift */,
 				1CA3621B259AE612000B039C /* LivenessManager.swift */,
-				1CA3621C259AE612000B039C /* Extentiions */,
+				1C90A6E725B6F9C60007475B /* LivenessController+Extension.swift */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		1CA36216259AE612000B039C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1CA36217259AE612000B039C /* ConfirmFaceCell.swift */,
-				1CA36218259AE612000B039C /* ConfirmDefaultValueCell.swift */,
-				1CA36219259AE612000B039C /* RegistrationFaceCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1CA3621C259AE612000B039C /* Extentiions */ = {
-			isa = PBXGroup;
-			children = (
-				1CA3621D259AE612000B039C /* Array+Extensions.swift */,
-				1CA3621E259AE612000B039C /* UIView+Extensions.swift */,
-				1CA3621F259AE612000B039C /* UIImage+Extensions.swift */,
-			);
-			path = Extentiions;
 			sourceTree = "<group>";
 		};
 		1CA3622C259AE62F000B039C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1CA3620A259AE38D000B039C /* Info.plist */,
 				1C5C308B25B04DEC005815FE /* camera.png */,
 				1C5C308A25B04DEC005815FE /* checked.png */,
 			);
@@ -275,18 +261,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C0C1A0B25B1758E00748EFC /* CameraControllerDelegate.swift in Sources */,
 				1CA36221259AE612000B039C /* RBKLivenessConfig.swift in Sources */,
+				1C90A6E825B6F9C60007475B /* LivenessController+Extension.swift in Sources */,
 				1CA36229259AE612000B039C /* Array+Extensions.swift in Sources */,
 				1CA36222259AE612000B039C /* UIUtilities.swift in Sources */,
+				1C0C1A0D25B17BE100748EFC /* LivenessController.swift in Sources */,
 				1CA3622B259AE612000B039C /* UIImage+Extensions.swift in Sources */,
 				1CA36228259AE612000B039C /* LivenessManager.swift in Sources */,
-				1CA36227259AE612000B039C /* CameraBottomView.swift in Sources */,
-				1CA36225259AE612000B039C /* ConfirmDefaultValueCell.swift in Sources */,
-				1CA36224259AE612000B039C /* ConfirmFaceCell.swift in Sources */,
 				1CA36220259AE612000B039C /* CameraController.swift in Sources */,
-				1CA36223259AE612000B039C /* LivenessCameraController.swift in Sources */,
-				1CA36226259AE612000B039C /* RegistrationFaceCell.swift in Sources */,
-				1CA3622A259AE612000B039C /* UIView+Extensions.swift in Sources */,
+				1C90A6E625B6E28A0007475B /* LivenessValidationType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +407,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RBKLiveness/Info.plist;
+				INFOPLIST_FILE = RBKLiveness/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -451,7 +435,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RBKLiveness/Info.plist;
+				INFOPLIST_FILE = RBKLiveness/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

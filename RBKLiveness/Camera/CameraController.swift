@@ -6,11 +6,6 @@ import AVFoundation
 import UIKit
 import CoreVideo
 
-public protocol CameraControllerDelegate: class {
-    /// called on error
-    func handleError(_ error: String)
-}
-
 public class CameraController: UIViewController {
     lazy var infoLabel = UILabel()
     lazy var successView = UIView()
@@ -252,7 +247,9 @@ extension CameraController {
         }
         view.addConstraints([height, width, centerX, bottom])
         
-        captureButton.cornered(radius: RBKLivenessConfig.buttonSize.height / 2)
+        captureButton.clipsToBounds = true
+        captureButton.layer.cornerRadius = RBKLivenessConfig.buttonSize.height / 2
+        
         captureButton.addTarget(self, action: #selector(captureImage), for: .touchUpInside)
         view.setNeedsLayout()
         view.layoutIfNeeded()

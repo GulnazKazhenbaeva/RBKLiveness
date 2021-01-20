@@ -1,153 +1,19 @@
-
-//  LivenessCameraController.swift
-//  mb_rbk
 //
-//  Created by Gulnaz on 12/24/19.
-//  Copyright © 2019 Gulnaz. All rights reserved.
+//  LivenessController+Extension.swift
+//  RBKLiveness
+//
+//  Created by Gulnaz on 1/19/21.
+//  Copyright © 2021 rbk. All rights reserved.
 //
 
-import AVFoundation
 import UIKit
-import CoreVideo
+import AVFoundation
 import MLKitVision
 import MLKitFaceDetection
 
-public protocol LivenessCameraDelegate: CameraControllerDelegate {
-    /// called after all tests have been passed
-    func handleRecognizedFace(_ face: UIImage)
-    /// called after every test step
-    func sendFacePhoto(_ face: UIImage)
-}
-
-public class LivenessCameraController: CameraController {
-    var confirmStep: LivenessValidationType = .turnLeft
-    private var faceFront: UIImage?
-    
-    private lazy var border = CAShapeLayer()
-    
-    @objc private func fireDelayTimer() {
-        delayTimer?.invalidate()
-    }
-    private var livenessTimer: Timer?
-    private var delayTimer: Timer?
-    private let delay: TimeInterval = 5
-    
-    private lazy var actions: [LivenessValidationType] = []
-    private var index: Int = 0
-    private var frameCounter = 0
-    open weak var delegate: LivenessCameraDelegate?
-
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        actions = prepareActions()
-        index = 0
-        frameCounter = 0
-    }
-   
-    override func setOutputs() {
-        let output = AVCaptureVideoDataOutput()
-        output.videoSettings = [
-          (kCVPixelBufferPixelFormatTypeKey as String): kCVPixelFormatType_32BGRA
-        ]
-        let outputQueue = DispatchQueue(label: "com.google.firebaseml.visiondetector.VideoDataOutputQueue")
-        output.setSampleBufferDelegate(self, queue: outputQueue)
-        guard self.captureSession.canAddOutput(output) else {
-          print("Failed to add capture session output.")
-          return
-        }
-        self.captureSession.addOutput(output)
-    }
-    
-    override func setTransparentPath(bounds: CGRect) {
-        let width = bounds.size.width * 0.8
-        let height = (bounds.size.height - captureButton.frame.height) * 0.7
-        let x = (bounds.size.width - width) / 2
-        let y = (bounds.size.height - height - captureButton.frame.height) / 2
-        let holeRect = CGRect(x: x, y: y, width: width, height: height)
-        self.maskFrame = holeRect
-        
-        let lineWidth: CGFloat = 5
-        let rect = CGRect(x: 0, y: 0, width: width, height: height)
-        
-        let ovalLine = CAShapeLayer()
-        let path = UIBezierPath(ovalIn: rect)
-        ovalLine.path = path.cgPath
-        
-        let borderLayer = CAShapeLayer()
-        borderLayer.path = ovalLine.path
-        borderLayer.fillColor = UIColor.clear.cgColor
-        borderLayer.lineWidth = lineWidth
-        borderLayer.frame = view.bounds
-        self.border = borderLayer
-        previewLayer?.addSublayer(borderLayer)
-        previewLayer?.frame = holeRect
-        previewLayer?.mask = ovalLine
-        
-        guard let previewLayer = previewLayer else { return }
-        view.clipsToBounds = true
-        view.layer.masksToBounds = true
-        view.layer.addSublayer(previewLayer)
-    }
-    
-    override func setInfoLabel() {
-        infoLabel.text = RBKLivenessConfig.faceError2Title
-    }
-    
-    override func addSubviews() {
-        let imgView = UIImageView(image:
-            UIImage(named: "checked.png")?.withRenderingMode(.alwaysTemplate)
-        )
-        successView.addSubview(imgView)
-        imgView.translatesAutoresizingMaskIntoConstraints = false
-        let top = NSLayoutConstraint(item: imgView, attribute: .top, relatedBy: .equal, toItem: successView, attribute: .top, multiplier: 1, constant: 20)
-        let left = NSLayoutConstraint(item: imgView, attribute: .left, relatedBy: .equal, toItem: successView, attribute: .left, multiplier: 1, constant: 20)
-        let right = NSLayoutConstraint(item: imgView, attribute: .right, relatedBy: .equal, toItem: successView, attribute: .right, multiplier: 1, constant: -20)
-        let bottom = NSLayoutConstraint(item: imgView, attribute: .bottom, relatedBy: .equal, toItem: successView, attribute: .bottom, multiplier: 1, constant: -20)
-        successView.addConstraints([top, left, right, bottom])
-        
-        self.view.addSubview(successView)
-        successView.translatesAutoresizingMaskIntoConstraints = false
-        let height = NSLayoutConstraint(item: successView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: RBKLivenessConfig.successViewSize.height)
-        let width = NSLayoutConstraint(item: successView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: RBKLivenessConfig.successViewSize.width)
-        let centerX = NSLayoutConstraint(item: successView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
-        let centerY = NSLayoutConstraint(item: successView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0)
-        view.addConstraints([height, width, centerX, centerY])
-       
-        successView.cornered(radius: 40)
-        successView.backgroundColor = RBKLivenessConfig.successColor
-        imgView.tintColor = RBKLivenessConfig.imgTintColor
-        successView.alpha = 0
-    }
-    
-    private func prepareActions() -> [LivenessValidationType] {
-        var actions: [LivenessValidationType] = []
-        let headActions: [LivenessValidationType] = [.turnLeft, .turnRight]
-        let faceActions: [LivenessValidationType] = [.smile, .blink]
-        while actions.count < 2 {
-            let headAction = headActions.getRandom()
-            if !actions.contains(headAction) {
-                actions.append(headAction)
-            }
-        }
-        while actions.count < 4 {
-            let faceAction = faceActions.getRandom()
-            if !actions.contains(faceAction) {
-                actions.append(faceAction)
-            }
-        }
-        return actions
-    }
-}
-
 // MARK: AVCaptureVideoDataOutputSampleBufferDelegate
 extension LivenessCameraController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func convert(cmage:CIImage) -> UIImage
-    {
-         let context:CIContext = CIContext.init(options: nil)
-         let cgImage:CGImage = context.createCGImage(cmage, from: cmage.extent)!
-         let image:UIImage = UIImage.init(cgImage: cgImage)
-         return image
-    }
+    
     public func captureOutput(
         _ output: AVCaptureOutput,
         didOutput sampleBuffer: CMSampleBuffer,
@@ -294,26 +160,6 @@ extension LivenessCameraController: AVCaptureVideoDataOutputSampleBufferDelegate
             } else if turnRight1 || leanRight1 {
                 self.startLivenessTimer()
             }
-                
-//        case .leanLeft:
-//            if self.livenessTimer?.isValid == true {
-//                if face.headEulerAngleZ <= 20 && abs(face.headEulerAngleY) < 5 {
-//                    self.livenessTimer?.invalidate()
-//                    self.handleSuccess(face: face, sampleBuffer: sampleBuffer)
-//                }
-//            } else if face.headEulerAngleZ > 20 && abs(face.headEulerAngleY) < 5 {
-//                self.startLivenessTimer()
-//            }
-//        case .leanRight:
-//            if self.livenessTimer?.isValid == true {
-//                if  -1 * face.headEulerAngleZ <= 20 && abs(face.headEulerAngleY) < 5 {
-//                    self.livenessTimer?.invalidate()
-//                    self.handleSuccess(face: face, sampleBuffer: sampleBuffer)
-//                }
-//            } else if -1 * face.headEulerAngleZ > 20 && abs(face.headEulerAngleY) < 5 {
-//                self.startLivenessTimer()
-//            } else {
-//        }
         case .smile:
             if face.smilingProbability >= 0.9 {
                 self.handleSuccess(face: face, sampleBuffer: sampleBuffer)
@@ -341,28 +187,6 @@ extension LivenessCameraController: AVCaptureVideoDataOutputSampleBufferDelegate
     }
     @objc private func stopLivenessTimer() {
         self.livenessTimer?.invalidate()
-    }
-    
-    enum LivenessValidationType {
-        case smile
-        case turnLeft
-        case turnRight
-        case leanLeft
-        case leanRight
-        case blink
-        case openMouth
-        
-        var title: String {
-            switch self {
-            case .smile: return RBKLivenessConfig.smileTitle
-            case .turnLeft: return RBKLivenessConfig.turnLeftTitle
-            case .turnRight: return RBKLivenessConfig.turnRightTitle
-            case .leanLeft: return RBKLivenessConfig.leanLeftTitle
-            case .leanRight: return RBKLivenessConfig.leanRightTitle
-            case .blink: return RBKLivenessConfig.blinkTitle
-            case .openMouth: return RBKLivenessConfig.openMouthTitle
-            }
-        }
     }
     
     private func getFaceImage(_ face: Face, sampleBuffer: CMSampleBuffer) {
