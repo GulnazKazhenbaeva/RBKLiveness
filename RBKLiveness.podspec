@@ -15,7 +15,7 @@ s.resource_bundles  = {
 s.source       = { :git => 'https://github.com/GulnazKazhenbaeva/RBKLiveness', :tag => "#{s.version}"}
 s.source_files = 'RBKLiveness/**/*.{swift}'
 s.resources = "RBKLiveness/**/*.{png,jpeg,jpg}"
-# s.static_framework = true
+s.static_framework = true
 s.dependency 'GoogleMLKit/FaceDetection'
 
 s.ios.vendored_frameworks = 'RBKLiveness.framework'
