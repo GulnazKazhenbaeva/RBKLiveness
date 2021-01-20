@@ -12,13 +12,13 @@ s.resource_bundles  = {
 	'RBKLiveness' => ['Resources/*.png']
 }
 s.source       = { :path => '{./RBKLiveness.zip}' }
-# s.source       = { :git => 'https://gulnazKazhenbaeva@bitbucket.org/rbk_dev_team/rbkliveness.git/RBKLiveness.zip', :tag => "#{s.version}"}
+# s.source       = { :git => 'https://github.com/GulnazKazhenbaeva/RBKLiveness/RBKLiveness.zip', :tag => "#{s.version}"}
 s.source_files = 'RBKLiveness/**/*.{swift}'
 s.resources = "RBKLiveness/**/*.{png,jpeg,jpg}"
 s.static_framework = true
 s.dependency 'GoogleMLKit/FaceDetection'
 
-s.vendored_framework = 'RBKLiveness.framework'
+s.ios.vendored_framework = 'RBKLiveness.framework'
 s.frameworks = 'UIKit', 'AVFoundation', 'CoreVideo'
 
 s.swift_version = "4.2" 
